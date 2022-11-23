@@ -7,6 +7,7 @@ pipeline {
                 script{
                     echo 'Hello World'
                     List<String> changes = getChangedFilesList()
+                    println changes
                 }
             }
         }
@@ -18,7 +19,9 @@ List<String> getChangedFilesList(){
     def changedFiles = []
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
-            println ("${entry.commitID}")
+            for (file in entry.getAffectedFiles()){
+                changedFiles.add(file.getPath())
+            }
         }
     }
 
