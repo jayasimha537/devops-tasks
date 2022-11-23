@@ -17,7 +17,7 @@ pipeline {
 List<String> getChangedFilesList(){
     def changedFiles = []
     for ( changeLogSet in currentBuild.changeSets){
-        println (changeLogSet)
+        println (changeLogSet.getItems())
     }
 
     return changedFiles
