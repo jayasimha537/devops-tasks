@@ -2,12 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
+        stage('Get Last Commit Details') {
             steps {
                 script{
-                    echo 'Hello World'
+
                     List<String> changes = getChangedFilesList()
-                    println changes
+                    println ("Changed file list: " + changes)
+
+                    String gitCommitId = getGitcommitID()
+                    println("GIT CommitID: " + gitCommitID)
+
+                    String gitCommitAuthorName = getAuthorName()
+                    println("GIT CommitAuthorName: " + gitCommitAuthorName)
+
+                    String gitCommitMessage = getCommitMessage()
+                    println("GIT CommitMessage: " + gitCommitMessage)
+
                 }
             }
         }
@@ -23,4 +33,37 @@ List<String> getChangedFilesList(){
         }
     }
     return changedFiles
+}
+
+@NonCPS
+String getGitcommitID(){
+    def gitCommitID = ""
+    for ( changeLogSet in currentBuild.changeSets){
+        for (entry in changeLogSet.getItems()){
+            changedFiles.addAll(entry.commitId)
+        }
+    }
+    return gitCommitID
+}
+
+@NonCPS
+String getAuthorName(){
+    def gitAuthorName = ""
+    for ( changeLogSet in currentBuild.changeSets){
+        for (entry in changeLogSet.getItems()){
+            changedFiles.addAll(entry.authorName)
+        }
+    }
+    return gitAuthorName
+}
+
+@NonCPS
+String getCommitMessage(){
+    def CommitMessage = ""
+    for ( changeLogSet in currentBuild.changeSets){
+        for (entry in changeLogSet.getItems()){
+            changedFiles.addAll(entry.msg)
+        }
+    }
+    return CommitMessage
 }
