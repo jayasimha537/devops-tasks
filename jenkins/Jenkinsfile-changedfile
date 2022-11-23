@@ -37,7 +37,7 @@ List<String> getChangedFilesList(){
 
 @NonCPS
 String getGitcommitID(){
-    def gitCommitID = ""
+    def gitCommitID = " "
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
             gitCommitID = entry.commitId
@@ -48,7 +48,7 @@ String getGitcommitID(){
 
 @NonCPS
 String getAuthorName(){
-    def gitAuthorName = ""
+    def gitAuthorName = " "
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
             gitAuthorName = entry.authorName
@@ -59,11 +59,11 @@ String getAuthorName(){
 
 @NonCPS
 String getCommitMessage(){
-    def CommitMessage = ""
+    def commitMessage = " "
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
-            CommitMessage = entry.msg
+            commitMessage = entry.msg
         }
     }
-    return CommitMessage
+    return commitMessage
 }
