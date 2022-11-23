@@ -19,7 +19,6 @@ List<String> getChangedFilesList(){
     def changedFiles = []
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
-            entry.properties.each{println it}
             changedFiles.addAll(entry.affectedPaths)
         }
     }
