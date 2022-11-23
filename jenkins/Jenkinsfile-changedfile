@@ -4,8 +4,19 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                echo 'Hello World'
+                script{
+                    echo 'Hello World'
+                    List<String> changes = getChangedFilesList()
+                }
             }
         }
     }
+}
+
+@NonCPS
+List<String> getChangedFilesList(){
+    def changedFiles = []
+    println(currentBuild.changeSets)
+
+    return changedFiles
 }
