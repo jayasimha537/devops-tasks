@@ -16,7 +16,9 @@ pipeline {
 @NonCPS
 List<String> getChangedFilesList(){
     def changedFiles = []
-    println(currentBuild.changeSets.getItems())
+    for ( changeLogSet in currentBuild.changeSets){
+        println (changeLogSet)
+    }
 
     return changedFiles
 }
