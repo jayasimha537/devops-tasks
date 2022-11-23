@@ -49,7 +49,7 @@ String getGitcommitID(){
 
 @NonCPS
 String getAuthorName(){
-    def gitAuthorName = " "
+    gitAuthorName = " "
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
             gitAuthorName = entry.authorName
@@ -60,7 +60,7 @@ String getAuthorName(){
 
 @NonCPS
 String getCommitMessage(){
-    def commitMessage = " "
+    commitMessage = " "
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
             commitMessage = entry.msg
