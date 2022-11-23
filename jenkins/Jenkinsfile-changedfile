@@ -37,7 +37,7 @@ List<String> getChangedFilesList(){
 
 @NonCPS
 String getGitcommitID(){
-    String gitCommitID = " "
+    gitCommitID = " "
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
             println("I am here")
