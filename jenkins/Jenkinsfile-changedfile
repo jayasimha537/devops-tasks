@@ -40,7 +40,6 @@ String getGitcommitID(){
     gitCommitID = " "
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
-            println("I am here")
             gitCommitID = entry.commitId
         }
     }
@@ -68,3 +67,4 @@ String getCommitMessage(){
     }
     return commitMessage
 }
+
