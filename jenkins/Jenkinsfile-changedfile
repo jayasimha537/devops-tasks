@@ -18,13 +18,14 @@ pipeline {
 List<String> getChangedFilesList(){
     def changedFiles = []
     for ( changeLogSet in currentBuild.changeSets){
-        for (entry in changeLogSet.getItems()){
-            println(entry.toString())
-            entry.properties.each{println it}
-            for (file in entry.getAffectedFiles()){
-                changedFiles.add(file.getPath())
-            }
-        }
+        // for (entry in changeLogSet.getItems()){
+        //     println(entry.toString())
+        //     entry.properties.each{println it}
+        //     for (file in entry.getAffectedFiles()){
+        //         changedFiles.add(file.getPath())
+        //     }
+        // }
+        changeLogSet.properties.each{println it}
     }
 
 
