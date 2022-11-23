@@ -40,7 +40,7 @@ String getGitcommitID(){
     def gitCommitID = ""
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
-            changedFiles.addAll(entry.commitId)
+            gitCommitID = entry.commitId
         }
     }
     return gitCommitID
@@ -51,7 +51,7 @@ String getAuthorName(){
     def gitAuthorName = ""
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
-            changedFiles.addAll(entry.authorName)
+            gitAuthorName = entry.authorName
         }
     }
     return gitAuthorName
@@ -62,7 +62,7 @@ String getCommitMessage(){
     def CommitMessage = ""
     for ( changeLogSet in currentBuild.changeSets){
         for (entry in changeLogSet.getItems()){
-            changedFiles.addAll(entry.msg)
+            CommitMessage = entry.msg
         }
     }
     return CommitMessage
