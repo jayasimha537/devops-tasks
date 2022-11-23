@@ -18,7 +18,7 @@ List<String> getChangedFilesList(){
     def changedFiles = []
     for ( changeLogSet in currentBuild.changeSets){
         for (file in changeLogSet.getItems()){
-            println (file.getPath())
+            println (entry.class.methods.collect{it.name})
         }
     }
 
